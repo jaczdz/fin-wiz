@@ -1,0 +1,5 @@
+{
+  "name": "FinWiz - Wskaźniki Finansowe",
+  "description": "Aplikacja do wizualizacji i analizy wskaźników finansowych (WIBOR, WIRON, Inflacja) oraz kalkulator rat kredytów hipotecznych.",
+  "requestFramePermissions": []
+}
