@@ -75,11 +75,7 @@ export default function Documentation() {
               <p className="text-slate-700 leading-relaxed">
                 Aplikacja korzysta z danych pobranych z portalu <strong>stooq.pl</strong>. Dane są przechowywane w postaci wbudowanych plików CSV, co zapewnia szybkie ładowanie i stabilność działania aplikacji bez konieczności odpytywania zewnętrznych serwerów.
               </p>
-              <div className="bg-brand-light border-l-4 border-brand-orange p-5 mt-6 rounded-r-lg">
-                <p className="text-slate-800 text-sm leading-relaxed">
-                  <strong>Informacja techniczna:</strong> Pliki CSV znajdują się w katalogu <code className="bg-white px-1 py-0.5 rounded text-brand-blue">/public/data/</code>. Aplikacja automatycznie wczytuje i parsuje te pliki przy użyciu biblioteki PapaParse.
-                </p>
-              </div>
+
             </div>
           </section>
         </div>
