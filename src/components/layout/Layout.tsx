@@ -21,7 +21,7 @@ export default function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-brand-light flex font-sans">
       {/* Mobile sidebar overlay */}
       {isSidebarOpen && (
         <div 
@@ -32,27 +32,27 @@ export default function Layout() {
 
       {/* Sidebar */}
       <aside className={cn(
-        "fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:flex-shrink-0",
+        "fixed inset-y-0 left-0 z-50 w-64 bg-brand-blue text-white border-r border-brand-blue-dark transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:flex-shrink-0",
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         <div className="h-full flex flex-col">
-          <div className="h-16 flex items-center px-6 border-b border-slate-200">
-            <LineChart className="w-6 h-6 text-indigo-600 mr-2" />
-            <span className="text-lg font-bold text-slate-900">FinWiz</span>
+          <div className="h-16 flex items-center px-6 border-b border-brand-blue-dark bg-brand-blue-dark/50">
+            <LineChart className="w-6 h-6 text-brand-orange mr-2" />
+            <span className="text-xl font-heading font-bold tracking-wide">FinWiz</span>
             <button 
-              className="ml-auto lg:hidden"
+              className="ml-auto lg:hidden text-slate-300 hover:text-white"
               onClick={() => setIsSidebarOpen(false)}
             >
-              <X className="w-5 h-5 text-slate-500" />
+              <X className="w-5 h-5" />
             </button>
           </div>
 
-          <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+          <nav className="flex-1 overflow-y-auto py-6 px-3 space-y-2">
             <NavLink
               to="/"
               className={({ isActive }) => cn(
-                "flex items-center px-3 py-2 text-sm font-medium rounded-md",
-                isActive ? "bg-indigo-50 text-indigo-700" : "text-slate-700 hover:bg-slate-100"
+                "flex items-center px-3 py-2.5 text-sm font-medium rounded-md transition-colors",
+                isActive ? "bg-brand-blue-dark text-white border-l-4 border-brand-orange" : "text-slate-300 hover:bg-brand-blue-dark hover:text-white border-l-4 border-transparent"
               )}
             >
               <Home className="w-5 h-5 mr-3" />
@@ -60,17 +60,17 @@ export default function Layout() {
             </NavLink>
 
             <div className="pt-4 pb-2">
-              <p className="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+              <p className="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
                 Wskaźniki
               </p>
-              <div className="mt-2 space-y-1">
+              <div className="space-y-1">
                 {INDICATORS.map((indicator) => (
                   <NavLink
                     key={indicator.id}
                     to={`/wskazniki/${indicator.id}`}
                     className={({ isActive }) => cn(
-                      "flex items-center px-3 py-2 text-sm font-medium rounded-md pl-11",
-                      isActive ? "bg-indigo-50 text-indigo-700" : "text-slate-700 hover:bg-slate-100"
+                      "flex items-center px-3 py-2 text-sm font-medium rounded-md pl-11 transition-colors",
+                      isActive ? "bg-brand-blue-dark text-white border-l-4 border-brand-orange" : "text-slate-300 hover:bg-brand-blue-dark hover:text-white border-l-4 border-transparent"
                     )}
                   >
                     {indicator.name}
@@ -82,8 +82,8 @@ export default function Layout() {
             <NavLink
               to="/kalkulator"
               className={({ isActive }) => cn(
-                "flex items-center px-3 py-2 text-sm font-medium rounded-md",
-                isActive ? "bg-indigo-50 text-indigo-700" : "text-slate-700 hover:bg-slate-100"
+                "flex items-center px-3 py-2.5 text-sm font-medium rounded-md transition-colors",
+                isActive ? "bg-brand-blue-dark text-white border-l-4 border-brand-orange" : "text-slate-300 hover:bg-brand-blue-dark hover:text-white border-l-4 border-transparent"
               )}
             >
               <Calculator className="w-5 h-5 mr-3" />
@@ -93,8 +93,8 @@ export default function Layout() {
             <NavLink
               to="/dokumentacja"
               className={({ isActive }) => cn(
-                "flex items-center px-3 py-2 text-sm font-medium rounded-md",
-                isActive ? "bg-indigo-50 text-indigo-700" : "text-slate-700 hover:bg-slate-100"
+                "flex items-center px-3 py-2.5 text-sm font-medium rounded-md transition-colors",
+                isActive ? "bg-brand-blue-dark text-white border-l-4 border-brand-orange" : "text-slate-300 hover:bg-brand-blue-dark hover:text-white border-l-4 border-transparent"
               )}
             >
               <BookOpen className="w-5 h-5 mr-3" />
@@ -102,22 +102,22 @@ export default function Layout() {
             </NavLink>
           </nav>
           
-          <div className="p-4 border-t border-slate-200 text-xs text-slate-500">
+          <div className="p-4 border-t border-brand-blue-dark text-xs text-slate-400 bg-brand-blue-dark/30">
             Dane z portalu stooq.pl
           </div>
         </div>
       </aside>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col min-w-0">
-        <header className="h-16 bg-white border-b border-slate-200 flex items-center px-4 lg:hidden">
+      <div className="flex-1 flex flex-col min-w-0 bg-[#f4f6f8]">
+        <header className="h-16 bg-white shadow-sm flex items-center px-4 lg:hidden">
           <button
             onClick={() => setIsSidebarOpen(true)}
             className="p-2 rounded-md text-slate-500 hover:bg-slate-100"
           >
             <Menu className="w-6 h-6" />
           </button>
-          <span className="ml-4 text-lg font-bold text-slate-900">FinWiz</span>
+          <span className="ml-4 text-lg font-heading font-bold text-brand-blue">FinWiz</span>
         </header>
 
         <main className="flex-1 overflow-y-auto p-4 lg:p-8">
