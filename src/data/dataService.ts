@@ -60,7 +60,8 @@ export const INDICATORS_INFO: Record<string, IndicatorInfo> = {
 
 export function fetchIndicatorData(id: string): Promise<IndicatorDataPoint[]> {
   return new Promise((resolve, reject) => {
-    Papa.parse(`/data/${id}.csv`, {
+    const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+    Papa.parse(`${baseUrl}data/${id}.csv`, {
       download: true,
       header: true,
       dynamicTyping: true,
