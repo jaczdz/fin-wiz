@@ -33,35 +33,34 @@ export const INDICATORS_INFO: Record<string, IndicatorInfo> = {
     name: 'WIBOR',
     fullName: 'Warsaw Interbank Offered Rate',
     description: 'Warsaw Interbank Offered Rate – referencyjna stopa procentowa, po jakiej banki na polskim rynku międzybankowym udzielają sobie nawzajem niezabezpieczonych pożyczek w złotych. Stanowi podstawę oprocentowania większości kredytów o zmiennej stopie w Polsce.',
-    parameters: ['O/N', '1M', '3M', '6M', '1Y']
+    parameters: ['1M', '3M', '6M']
   },
   wiron: {
     id: 'wiron',
     name: 'WIRON',
     fullName: 'Warsaw Interest Rate Overnight',
-    description: 'Warsaw Interest Rate Overnight – wskaźnik referencyjny stopy procentowej oparty na rzeczywistych transakcjach depozytowych overnight zawieranych przez banki, instytucje finansowe oraz duże przedsiębiorstwa.',
-    parameters: ['O/N', '1M', '3M', '6M']
+    description: 'Warsaw Interest Rate Overnight – wskaźnik referencyjny stopy procentowej oparty na rzeczywistych transakcjach depozytowych overnight zawieranych przez banki, instytucje finansowe oraz duże przedsiębiorstwa. Został wybrany jako wskaźnik mający zastąpić WIBOR.',
+    parameters: ['1M', '3M', '6M']
   },
   wibid: {
     id: 'wibid',
     name: 'WIBID',
     fullName: 'Warsaw Interbank Bid Rate',
     description: 'Warsaw Interbank Bid Rate – referencyjna stopa procentowa, po jakiej banki na polskim rynku międzybankowym są skłonne przyjąć depozyty w złotych od innych banków.',
-    parameters: ['O/N', '1M', '3M', '6M']
+    parameters: ['1M', '3M', '6M']
   },
   polstr: {
     id: 'polstr',
     name: 'POLSTR',
-    fullName: 'Polish Short Term Rate ',
-    description: 'Polish Short Term Rate – wskaźnik referencyjny mierzący średnią stopę procentową jednodniowych depozytów niezabezpieczonych w złotych na polskim rynku międzybankowym.',
-    parameters: ['O/N', '1M', '3M', '6M']
+    fullName: 'Polish Sterling Overnight Index Average',
+    description: 'Polish Sterling Overnight Index Average – wskaźnik referencyjny mierzący średnią stopę procentową jednodniowych depozytów niezabezpieczonych w złotych na polskim rynku międzybankowym.',
+    parameters: ['O/N']
   }
 };
 
 export function fetchIndicatorData(id: string): Promise<IndicatorDataPoint[]> {
   return new Promise((resolve, reject) => {
-    const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-    Papa.parse(`${baseUrl}data/${id}.csv`, {
+    Papa.parse(`/data/${id}.csv`, {
       download: true,
       header: true,
       dynamicTyping: true,
